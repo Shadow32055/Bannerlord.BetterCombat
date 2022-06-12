@@ -2,11 +2,12 @@
 using TaleWorlds.Core;
 using BetterCombat.Utils;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
+using TaleWorlds.CampaignSystem.Map;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Localization;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.CampaignSystem.GameComponents;
 using System;
+using TaleWorlds.CampaignSystem.Party;
 
 namespace BetterCombat.Patches {
 

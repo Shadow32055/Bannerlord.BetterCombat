@@ -13,8 +13,9 @@ namespace BetterCombat.Behaviors {
 		public HealthOnHit(HealthManager hm) {
 			this.hm = hm;
         }
-		public override void OnScoreHit(Agent affectedAgent, Agent affectorAgent, WeaponComponentData attackerWeapon, bool isBlocked, float damage, float damagedHp, float movementSpeedDamageModifier, float hitDistance, AgentAttackType attackType, float shotDifficulty, BoneBodyPartType victimHitBodyPart) {
-			base.OnScoreHit(affectedAgent, affectorAgent, attackerWeapon, isBlocked, damage, damagedHp, movementSpeedDamageModifier, hitDistance, attackType, shotDifficulty, victimHitBodyPart);	
+
+        public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon) {
+            base.OnAgentHit(affectedAgent, affectorAgent, damage, affectorWeapon);
 			try {
 				if (affectorAgent.Character != null && affectedAgent.Character != null) {
 					if (affectorAgent == Agent.Main && damage > 0f) {
@@ -44,6 +45,7 @@ namespace BetterCombat.Behaviors {
 				Helper.WriteToLog("Problem with health on hit, cause: " + e);
 			}
 		}
+
 		private float GetHealAmount(float healAmount, Agent agent) {
 			if ((healAmount + agent.Health) > agent.HealthLimit) {
 				return agent.HealthLimit - agent.Health;
