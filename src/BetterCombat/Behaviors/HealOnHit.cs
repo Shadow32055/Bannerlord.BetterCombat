@@ -14,13 +14,14 @@ namespace BetterCombat.Behaviors {
 			this.hm = hm;
         }
 
-        public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, int damage, in MissionWeapon affectorWeapon) {
-            base.OnAgentHit(affectedAgent, affectorAgent, damage, affectorWeapon);
+        public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, in MissionWeapon affectorWeapon, in Blow blow, in AttackCollisionData attackCollisionData) {
+            base.OnAgentHit(affectedAgent, affectorAgent, affectorWeapon, blow, attackCollisionData);
+
 			try {
 				if (affectorAgent.Character != null && affectedAgent.Character != null) {
-					if (affectorAgent == Agent.Main && damage > 0f) {
+					if (affectorAgent == Agent.Main && attackCollisionData.InflictedDamage > 0f) {
 
-						float healAmount = damage * Helper.settings.PlayerPercentHealthOnHit;
+						float healAmount = attackCollisionData.InflictedDamage * Helper.settings.PlayerPercentHealthOnHit;
 
 						if (healAmount < Helper.settings.PlayerMinHealthOnHit) {
 							healAmount = Helper.settings.PlayerMinHealthOnHit;

@@ -2,7 +2,6 @@
 using TaleWorlds.Core;
 using BetterCombat.Utils;
 using TaleWorlds.MountAndBlade;
-using TaleWorlds.CampaignSystem.Map;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Localization;
 using TaleWorlds.CampaignSystem.GameComponents;
@@ -15,12 +14,11 @@ namespace BetterCombat.Patches {
     class PostfixPatches {
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(Mission), "DecideAgentKnockedByBlow")]
-        public static void DecideAgentKnockedByBlow(Agent attacker, Agent victim, in AttackCollisionData collisionData, WeaponComponentData attackerWeapon,
-            bool isInitialBlowShrugOff, ref Blow blow) {
+        [HarmonyPatch(typeof(MissionCombatMechanicsHelper), "DecideAgentKnockedDownByBlow")]
+        public static void DecideAgentKnockedDownByBlow(Agent attackerAgent, Agent victimAgent, in AttackCollisionData collisionData, WeaponComponentData attackerWeapon, ref Blow blow) {
 
             if (Helper.settings.PreventKnockdown) {
-                if (victim.IsMainAgent) {
+                if (victimAgent.IsMainAgent) {
 
                     blow.BlowFlag &= ~BlowFlags.KnockBack;
                     blow.BlowFlag &= ~BlowFlags.KnockDown;
@@ -29,8 +27,8 @@ namespace BetterCombat.Patches {
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(Mission), "DecideAgentShrugOffBlow")]
-        protected static void DecideAgentShrugOffBlow(Agent victimAgent, AttackCollisionData collisionData, ref Blow blow, ref bool __result) {
+        [HarmonyPatch(typeof(MissionCombatMechanicsHelper), "DecideAgentShrugOffBlow")]
+        public static void DecideAgentShrugOffBlow(Agent victimAgent, AttackCollisionData collisionData, ref Blow blow, ref bool __result) {
 
             if (Helper.settings.ShrugOffBlow) {
                 if (victimAgent.IsMainAgent || (victimAgent.IsMount && victimAgent.IsMine)) {
