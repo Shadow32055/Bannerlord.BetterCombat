@@ -201,12 +201,16 @@ namespace BetterCombat.Settings {
 
 
         [SettingPropertyGroup(combatHeader + "/" + sliceHeader)]
-        [SettingPropertyBool("{=BC_h1h5go}Slice Through", Order = 0, RequireRestart = false, HintText = "{=BC_4E7oI9}Whether momentum is reduced after each hit. If enabled swing speed will be constant no matter how many enemies hit. (Active for all)")]
+        [SettingPropertyBool("{=BC_h1h5go}Slice Through", Order = 0, IsToggle = true, RequireRestart = false, HintText = "{=BC_4E7oI9}Whether momentum is reduced after each hit. If enabled swing speed will be constant no matter how many enemies hit. (Active for all)")]
         public bool CutThroughActive { get; set; } = false;
 
         [SettingPropertyGroup(combatHeader + "/" + sliceHeader)]
         [SettingPropertyBool("{=BC_dH3sFR}Slice Through Player Only", Order = 0, RequireRestart = false, HintText = "{=BC_C7X0a2}Should Slice through be for player only")]
         public bool CutThroughPlayerOnly { get; set; } = false;
+
+        [SettingPropertyGroup(combatHeader + "/" + sliceHeader)]
+        [SettingPropertyFloatingInteger("{=BC_9g69gX}Slice Through Chance", 0f, 1f, "0.00%", Order = 0, RequireRestart = false, HintText = "{=BC_uV45Mg}Chance to slice through target")]
+        public float CutThroughChance { get; set; } = 0.02f;
 
 
         [SettingPropertyGroup(combatHeader + "/" + fleeingHeader)]

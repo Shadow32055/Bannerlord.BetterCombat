@@ -36,6 +36,7 @@
         bool MutliHitOneHanded { get; set; }
         bool CutThroughActive { get; set; }
         bool CutThroughPlayerOnly { get; set; }
+        float CutThroughChance { get; set; }
         bool PerventFleeing { get; set; }
         float FleeingChance { get; set; }
     }

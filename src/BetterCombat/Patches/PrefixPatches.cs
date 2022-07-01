@@ -2,6 +2,8 @@
 using HarmonyLib;
 using BetterCombat.Utils;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.Core;
+using TaleWorlds.CampaignSystem;
 
 namespace BetterCombat.Patches {
 
@@ -64,11 +66,20 @@ namespace BetterCombat.Patches {
 				if (Helper.settings.CutThroughPlayerOnly && !attacker.IsPlayerControlled)
 					return true;
 
-				return false;
 
+				double random = MBRandom.RandomFloat;
+
+				if (random <= Helper.settings.CutThroughChance) {
+
+					/*if (attacker.IsMainAgent) {
+						Helper.DisplayFriendlyMsg("cut through!");
+					}*/
+
+					return false;
+				}
 
 			} catch (Exception e) {
-				Helper.WriteToLog("Issue with updating momentum. " + e);
+				Helper.WriteToLog("Issue with Mission.UpdateMomentumRemaining prefix. Exception: " + e);
 			}
 
 			return true;

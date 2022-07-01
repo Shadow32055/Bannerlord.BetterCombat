@@ -90,7 +90,6 @@
     <Compile Include="SubModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModuleData\Languages\std_bc_strings_xml.xml" />
     <Content Include="_Module\ModuleData\Languages\std_bc_strings_xml.xml" />
     <Content Include="_Module\SubModule.xml" />
   </ItemGroup>

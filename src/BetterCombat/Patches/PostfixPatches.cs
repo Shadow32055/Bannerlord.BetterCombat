@@ -123,5 +123,13 @@ namespace BetterCombat.Patches {
                 }
             }
         }
+
+        //TODO: add adjustable variable
+       /* [HarmonyPatch(typeof(Mission), "GetDamageMultiplierOfCombatDifficulty")]
+        public static void GetDamageMultiplierOfCombatDifficulty(ref float __result) {
+            try {
+                __result = 1f;
+            } catch {}
+        }*/
     }
 }

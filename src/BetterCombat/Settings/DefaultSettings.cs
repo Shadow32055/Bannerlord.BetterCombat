@@ -35,6 +35,7 @@
         public bool MutliHitOneHanded { get; set; } = false;
         public bool CutThroughActive { get; set; } = false;
         public bool CutThroughPlayerOnly { get; set; } = false;
+        public float CutThroughChance { get; set; } = 0.02f;
         public bool PerventFleeing { get; set; } = false;
         public float FleeingChance { get; set; } = .5f;
     }
