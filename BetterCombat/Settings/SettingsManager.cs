@@ -5,12 +5,12 @@ using System.Text;
 using TaleWorlds.Library;
 using BetterCombat.Utils;
 using System.Xml.Serialization;
-using MCM.Abstractions.Settings.Base.Global;
+using MCM.Abstractions.Base.Global;
 
 namespace BetterCombat.Settings {
 	public class SettingsManager {
 
-		private static ISettings instance;
+		private static ISettings? instance;
 		private static readonly string path = BasePath.Name + "Modules/" + Helper.modName + "/config.xml";
 		private static readonly FileInfo configFile = new FileInfo(path);
 
@@ -21,7 +21,7 @@ namespace BetterCombat.Settings {
 			get {
 				if (useMCM) {
 					try {
-						ISettings modSettings = GlobalSettings<MCMSettings>.Instance;
+						ISettings? modSettings = GlobalSettings<MCMSettings>.Instance;
 						SettingsManager.instance = modSettings ?? SettingsManager.instance;
 					} catch (Exception e) {
 						Helper.DisplayWarningMsg("Error using MCM for " + Helper.modName);

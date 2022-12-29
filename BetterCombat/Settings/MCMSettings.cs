@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v1;
 using MCM.Abstractions.Attributes.v2;
-using MCM.Abstractions.Settings.Base;
-using MCM.Abstractions.Settings.Base.Global;
+using MCM.Abstractions.Base.Global;
+using MCM.Common;
 
 namespace BetterCombat.Settings {
     internal class MCMSettings : AttributeGlobalSettings<MCMSettings>, ISettings {
