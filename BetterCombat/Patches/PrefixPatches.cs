@@ -1,13 +1,12 @@
-﻿using System;
+﻿using BetterCore.Utils;
 using HarmonyLib;
-using BetterCombat.Utils;
-using TaleWorlds.MountAndBlade;
+using System;
 using TaleWorlds.Core;
-using TaleWorlds.CampaignSystem;
+using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Patches {
 
-	[HarmonyPatch]
+    [HarmonyPatch]
 	class PrefixPatches {
 
 		/*[HarmonyPrefix]
@@ -54,7 +53,7 @@ namespace BetterCombat.Patches {
 		private static bool UpdateMomentumRemaining(ref float momentumRemaining, Blow b, in AttackCollisionData collisionData, Agent attacker, Agent victim, in MissionWeapon attackerWeapon, ref bool isCrushThrough) {
 			try {
 
-				if (!Helper.settings.CutThroughActive) {
+				if (!SubModule._settings.CutThroughActive) {
 					//cut through not enabled, let TW method run
 					return true;
 				}
@@ -63,13 +62,13 @@ namespace BetterCombat.Patches {
 					return true;
 				}
 
-				if (Helper.settings.CutThroughPlayerOnly && !attacker.IsPlayerControlled)
+				if (SubModule._settings.CutThroughPlayerOnly && !attacker.IsPlayerControlled)
 					return true;
 
 
 				double random = MBRandom.RandomFloat;
 
-				if (random <= Helper.settings.CutThroughChance) {
+				if (random <= SubModule._settings.CutThroughChance) {
 
 					/*if (attacker.IsMainAgent) {
 						Helper.DisplayFriendlyMsg("cut through!");
@@ -79,7 +78,7 @@ namespace BetterCombat.Patches {
 				}
 
 			} catch (Exception e) {
-				Helper.WriteToLog("Issue with Mission.UpdateMomentumRemaining prefix. Exception: " + e);
+				Logger.SendMessage("Mission.UpdateMomentumRemaining threw exception: " + e, Severity.High);
 			}
 
 			return true;

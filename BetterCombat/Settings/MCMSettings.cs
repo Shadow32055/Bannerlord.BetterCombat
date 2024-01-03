@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using MCM.Abstractions.Attributes;
+﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v1;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.Global;
-using MCM.Common;
 
 namespace BetterCombat.Settings {
-    internal class MCMSettings : AttributeGlobalSettings<MCMSettings>, ISettings {
+    public class MCMSettings : AttributeGlobalSettings<MCMSettings> {
 
         const string healthAdjustHeader = "{=BC_dcTZTc}Health Adjustments";
         const string playerHeader = "{=BC_WSwISD}Player";

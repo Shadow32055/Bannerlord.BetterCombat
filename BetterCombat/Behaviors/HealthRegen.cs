@@ -1,10 +1,10 @@
-﻿using System;
-using BetterCombat.Utils;
-using BetterCombat.Custom;
+﻿using BetterCombat.Custom;
+using BetterCore.Utils;
+using System;
 using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Behaviors {
-	public class HealthRegen : MissionBehavior {
+    public class HealthRegen : MissionBehavior {
 
 		private float lastHealthPlayer;
 		private bool tookDamagePlayer;
@@ -24,7 +24,7 @@ namespace BetterCombat.Behaviors {
 				Mission mission = Mission.Current;
 				if (mission != null && mission.MainAgent != null) {
 
-					if (Helper.settings.PlayerHealthRegenAmount > 0) {
+					if (SubModule._settings.PlayerHealthRegenAmount > 0) {
 						if (this.nextHealPlayer.IsPast) {
 
 							if (tookDamagePlayer) {
@@ -33,11 +33,11 @@ namespace BetterCombat.Behaviors {
 
 							if (this.lastHealthPlayer > mission.MainAgent.Health) {
 								tookDamagePlayer = true;
-								this.nextHealPlayer = MissionTime.SecondsFromNow(Helper.settings.PlayerRegenDamageDelay);
+								this.nextHealPlayer = MissionTime.SecondsFromNow(SubModule._settings.PlayerRegenDamageDelay);
 							} else {
-								this.nextHealPlayer = MissionTime.SecondsFromNow(Helper.settings.PlayerHealthRegenInterval);
+								this.nextHealPlayer = MissionTime.SecondsFromNow(SubModule._settings.PlayerHealthRegenInterval);
 
-								float healAmount = Helper.settings.PlayerHealthRegenAmount;
+								float healAmount = SubModule._settings.PlayerHealthRegenAmount;
 
 								
 
@@ -52,7 +52,7 @@ namespace BetterCombat.Behaviors {
 					this.nextHealPlayer = MissionTime.Zero;
 				}
 			} catch (Exception e) {
-				Helper.WriteToLog("Problem with health regen, cause: " + e);
+				Logger.SendMessage("Problem with health regen, cause: " + e, Severity.High);
 			}
 		}
 

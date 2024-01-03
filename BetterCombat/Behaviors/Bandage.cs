@@ -1,10 +1,11 @@
-﻿using System;
-using BetterCombat.Utils;
+﻿using BetterCombat.Custom;
+using BetterCore.Utils;
+using System;
 using TaleWorlds.Library;
-using BetterCombat.Custom;
 using TaleWorlds.InputSystem;
-using TaleWorlds.MountAndBlade;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
+using Logger = BetterCore.Utils.Logger;
 
 namespace BetterCombat.Behaviors {
     public class Bandage : MissionBehavior {
@@ -29,18 +30,18 @@ namespace BetterCombat.Behaviors {
 
                     if (activlyBandaging) {
                         if (IsMoving(Mission.Current.MainAgent.MovementVelocity)) {
-                            Helper.DisplayMsg(new TextObject("{=BC_qezRvY}Bandaging canceled due to movment!").ToString());
+                            Logger.SendMessage(new TextObject("{=BC_qezRvY}Bandaging canceled due to movment!").ToString(), Severity.Alert);
                             activlyBandaging = false;
                         }
 
                         if (bandageTime.IsPast) {
-                            float healAmount = GetHealAmount(Helper.settings.BandageHealAmount);
+                            float healAmount = GetHealAmount(SubModule._settings.BandageHealAmount);
                             if (hm.AvaiableHealingLeft()) {
                                 Mission.Current.MainAgent.Health += healAmount;
                                 hm.AddOutput(healAmount);
                                 bandagesLeft--;
                             } else {
-                                Helper.DisplayMsg(new TextObject("{=BC_7cWw3B}No more avaiable healing!").ToString());
+                                Logger.SendMessage(new TextObject("{=BC_7cWw3B}No more avaiable healing!").ToString(), Severity.Alert);
                             }
 
                             activlyBandaging = false;
@@ -52,17 +53,17 @@ namespace BetterCombat.Behaviors {
                                 text = String.Format(new TextObject("{=BC_q2WCze}Bandage applied! {0} bandages left!").ToString(), bandagesLeft);
                             }
 
-                            Helper.DisplayMsg(text);
+                            Logger.SendMessage(text, Severity.Normal);
                         }
                     }
 
-                    if (Input.IsKeyPressed(Helper.bandageKey)) {
+                    if (Input.IsKeyPressed(SubModule.bandageKey)) {
                         UseBandage();
                     }
 
                 }
             } catch (Exception e) {
-                Helper.WriteToLog("Problem with bandages, cause: " + e);
+                Logger.PrintToLog("Problem with bandages, cause: " + e);
             }
         }
 
@@ -86,20 +87,20 @@ namespace BetterCombat.Behaviors {
                 if (bandagesLeft > 0) {
                     if (!activlyBandaging) {
                         if (Mission.Current.MainAgent.Health != Mission.Current.MainAgent.HealthLimit) {
-                            bandageTime = MissionTime.SecondsFromNow(Helper.settings.BandageTime);
+                            bandageTime = MissionTime.SecondsFromNow(SubModule._settings.BandageTime);
                             activlyBandaging = true;
-                            Helper.DisplayMsg(String.Format(new TextObject("{=BC_RnoIZo}Applying bandage... It will take {0} seconds.").ToString(), Helper.settings.BandageTime));
+                            Logger.SendMessage(String.Format(new TextObject("{=BC_RnoIZo}Applying bandage... It will take {0} seconds.").ToString(), SubModule._settings.BandageTime), Severity.Normal);
                         } else {
-                            Helper.DisplayMsg(new TextObject("{=BC_359Qlt}You're health is full.").ToString());
+                            Logger.SendMessage(new TextObject("{=BC_359Qlt}You're health is full.").ToString(), Severity.Normal);
                         }
                     } else {
-                        Helper.DisplayMsg(new TextObject("{=BC_v3QHtG}You're already applying a bandage!").ToString());
+                        Logger.SendMessage(new TextObject("{=BC_v3QHtG}You're already applying a bandage!").ToString(), Severity.Normal);
                     }
                 } else {
-                    Helper.DisplayWarningMsg(new TextObject("{=BC_dU1uDF}Out of bandages!").ToString());
+                    Logger.SendMessage(new TextObject("{=BC_dU1uDF}Out of bandages!").ToString(), Severity.Alert);
                 }
             } else {
-                Helper.DisplayWarningMsg(new TextObject("{=BC_CfS4GM}You can't bandage while moving!").ToString());
+                Logger.SendMessage(new TextObject("{=BC_CfS4GM}You can't bandage while moving!").ToString(), Severity.Alert);
             }
         }
     }

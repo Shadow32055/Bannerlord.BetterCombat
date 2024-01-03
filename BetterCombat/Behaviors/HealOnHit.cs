@@ -1,11 +1,10 @@
-﻿using System;
-using TaleWorlds.Core;
-using BetterCombat.Utils;
-using BetterCombat.Custom;
+﻿using BetterCombat.Custom;
+using BetterCore.Utils;
+using System;
 using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Behaviors {
-	public class HealthOnHit : MissionBehavior {
+    public class HealthOnHit : MissionBehavior {
 
 		private HealthManager hm;
 		public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
@@ -21,14 +20,14 @@ namespace BetterCombat.Behaviors {
 				if (affectorAgent.Character != null && affectedAgent.Character != null) {
 					if (affectorAgent == Agent.Main && attackCollisionData.InflictedDamage > 0f) {
 
-						float healAmount = attackCollisionData.InflictedDamage * Helper.settings.PlayerPercentHealthOnHit;
+						float healAmount = attackCollisionData.InflictedDamage * SubModule._settings.PlayerPercentHealthOnHit;
 
-						if (healAmount < Helper.settings.PlayerMinHealthOnHit) {
-							healAmount = Helper.settings.PlayerMinHealthOnHit;
+						if (healAmount < SubModule._settings.PlayerMinHealthOnHit) {
+							healAmount = SubModule._settings.PlayerMinHealthOnHit;
 						}
 
-						if (healAmount > Helper.settings.PlayerMaxHealthOnHit) {
-							healAmount = Helper.settings.PlayerMaxHealthOnHit;
+						if (healAmount > SubModule._settings.PlayerMaxHealthOnHit) {
+							healAmount = SubModule._settings.PlayerMaxHealthOnHit;
 						}
 
 						float refinedHealthAmount = GetHealAmount(healAmount, affectorAgent);
@@ -43,7 +42,7 @@ namespace BetterCombat.Behaviors {
 				}
 
 			} catch (Exception e) {
-				Helper.WriteToLog("Problem with health on hit, cause: " + e);
+				Logger.SendMessage("Problem with health on hit, cause: " + e, Severity.High);
 			}
 		}
 

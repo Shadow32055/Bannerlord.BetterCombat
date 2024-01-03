@@ -1,4 +1,4 @@
-﻿using BetterCombat.Utils;
+﻿using BetterCore.Utils;
 using System.Collections.Generic;
 using TaleWorlds.MountAndBlade;
 
@@ -6,7 +6,7 @@ namespace BetterCombat.Custom {
     public class HealthManager {
 
         private List<float> outputs = new List<float>();
-        private float maxHealing = Helper.settings.HealingAmount;
+        private float maxHealing = SubModule._settings.HealingAmount;
         private float possibleHealing;
 
         public HealthManager(Agent agent) {
@@ -37,7 +37,7 @@ namespace BetterCombat.Custom {
         }
 
         public bool AvaiableHealingLeft() {
-            if (Helper.settings.HealingLimit) {
+            if (SubModule._settings.HealingLimit) {
                 if (possibleHealing > 0) {
                     return true;
                 }

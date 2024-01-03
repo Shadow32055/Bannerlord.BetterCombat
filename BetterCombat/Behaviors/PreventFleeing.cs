@@ -1,17 +1,14 @@
-﻿using BetterCombat.Utils;
-using TaleWorlds.Core;
+﻿using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Behaviors {
-	class PreventFleeing : MissionBehavior {
-
-
+    class PreventFleeing : MissionBehavior {
 
 		public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
         public override void OnAgentFleeing(Agent affectedAgent) {
 
-            double chance = Helper.settings.FleeingChance;
+            double chance = SubModule._settings.FleeingChance;
             double random = MBRandom.RandomFloat;
 
             if (random <= chance) {
