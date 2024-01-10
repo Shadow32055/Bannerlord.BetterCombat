@@ -1,7 +1,6 @@
 ﻿using BetterCore.Utils;
 using HarmonyLib;
 using System;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Patches {
@@ -53,7 +52,7 @@ namespace BetterCombat.Patches {
 		private static bool UpdateMomentumRemaining(ref float momentumRemaining, Blow b, in AttackCollisionData collisionData, Agent attacker, Agent victim, in MissionWeapon attackerWeapon, ref bool isCrushThrough) {
 			try {
 
-				if (!SubModule._settings.CutThroughActive) {
+				if (!BetterCombat.Settings.CutThroughActive) {
 					//cut through not enabled, let TW method run
 					return true;
 				}
@@ -62,23 +61,21 @@ namespace BetterCombat.Patches {
 					return true;
 				}
 
-				if (SubModule._settings.CutThroughPlayerOnly && !attacker.IsPlayerControlled)
+				if (BetterCombat.Settings.CutThroughPlayerOnly && !attacker.IsPlayerControlled)
 					return true;
 
 
-				double random = MBRandom.RandomFloat;
-
-				if (random <= SubModule._settings.CutThroughChance) {
+				
 
 					/*if (attacker.IsMainAgent) {
 						Helper.DisplayFriendlyMsg("cut through!");
 					}*/
 
-					return false;
-				}
+				return false;
+				
 
 			} catch (Exception e) {
-				Logger.SendMessage("Mission.UpdateMomentumRemaining threw exception: " + e, Severity.High);
+				NotifyHelper.ReportError(BetterCombat.ModName, "Mission.UpdateMomentumRemaining threw exception: " + e);
 			}
 
 			return true;

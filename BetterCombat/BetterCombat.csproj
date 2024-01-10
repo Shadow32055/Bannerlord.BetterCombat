@@ -52,6 +52,12 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="_Module\SubModule.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
         <Exec Command="RMDIR /Q /S &quot;%25GameFolder%25\Modules\$(MSBuildProjectName)&quot;" />
     </Target>

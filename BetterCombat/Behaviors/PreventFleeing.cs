@@ -8,7 +8,7 @@ namespace BetterCombat.Behaviors {
 
         public override void OnAgentFleeing(Agent affectedAgent) {
 
-            double chance = SubModule._settings.FleeingChance;
+            double chance = BetterCombat.Settings.FleeingChance;
             double random = MBRandom.RandomFloat;
 
             if (random <= chance) {
