@@ -54,7 +54,12 @@ namespace BetterCombat.Behaviors {
 
 		private void Regenerate(Agent agent, float amount) {
 			if (agent.Health < agent.HealthLimit) {
-				float healAmount = HealthHelper.GetMaxHealAmount(amount, agent);
+				float healAmount = 0;
+				if (BetterCombat.Settings.HealingLimit) {
+					healAmount = HealthHelper.GetMaxHealAmount(amount, agent.Health, BetterCombat.Settings.HealingThreshold * agent.HealthLimit);
+				} else {
+					healAmount = HealthHelper.GetMaxHealAmount(amount, agent.Health, agent.HealthLimit);
+				}
 
 				if (agent == Mission.Current.MainAgent) {
 					agent.Health += healAmount;

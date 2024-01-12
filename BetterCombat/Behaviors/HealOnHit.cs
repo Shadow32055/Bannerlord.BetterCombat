@@ -24,7 +24,13 @@ namespace BetterCombat.Behaviors {
 							healAmount = BetterCombat.Settings.PlayerMaxHealthOnHit;
 						}
 
-						float refinedHealthAmount = HealthHelper.GetMaxHealAmount(healAmount, affectorAgent);
+						float refinedHealthAmount = 0;
+
+						if (BetterCombat.Settings.HealingLimit) {
+                            refinedHealthAmount = HealthHelper.GetMaxHealAmount(healAmount, affectorAgent.Health, BetterCombat.Settings.HealingThreshold * affectorAgent.HealthLimit);
+                        } else {
+                            refinedHealthAmount = HealthHelper.GetMaxHealAmount(healAmount, affectorAgent.Health, affectorAgent.HealthLimit);
+						}
 
 						if (affectorAgent.Health < affectorAgent.HealthLimit) {
 
