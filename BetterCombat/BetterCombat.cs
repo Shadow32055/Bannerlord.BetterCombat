@@ -8,8 +8,8 @@ using TaleWorlds.MountAndBlade;
 namespace BetterCombat {
     public class BetterCombat : MBSubModuleBase {
 
-		public static MCMSettings Settings { get; private set; }
-        public static string ModName { get; private set; } = "ForgotToSet";
+		public static MCMSettings Settings { get; private set; } = new MCMSettings();
+        public static string ModName { get; private set; } = "BetterCombat";
 
         private bool isInitialized = false;
         private bool isLoaded = false;
@@ -28,7 +28,7 @@ namespace BetterCombat {
 
                 isInitialized = true;
             } catch (Exception e) {
-                NotifyHelper.ReportError(ModName, "OnSubModuleLoad threw exception " + e);
+                NotifyHelper.WriteError(ModName, "OnSubModuleLoad threw exception " + e);
             }
         }
 
@@ -44,12 +44,12 @@ namespace BetterCombat {
 
                 Settings = MCMSettings.Instance ?? throw new NullReferenceException("Settings are null");
 
-                NotifyHelper.ChatMessage(ModName + " Loaded.", MsgType.Good);
-                Integrations.BetterHealthLoaded = true;
+                NotifyHelper.WriteMessage(ModName + " Loaded.", MsgType.Good);
+                Integrations.BetterCombatLoaded = true;
 
                 isLoaded = true;
             } catch (Exception e) {
-                NotifyHelper.ReportError(ModName, "OnBeforeInitialModuleScreenSetAsRoot threw exception " + e);
+                NotifyHelper.WriteError(ModName, "OnBeforeInitialModuleScreenSetAsRoot threw exception " + e);
             }
         }
 
@@ -57,17 +57,14 @@ namespace BetterCombat {
 			base.OnMissionBehaviorInitialize(mission);
 
 			if (Settings.HealthRegenEnabled) {
-                NotifyHelper.PrintToLog("Loading HealthRegen.");
 				mission.AddMissionBehavior(new HealthRegen());
 			}
 
-			if (Settings.HealthOnHitEnabled) {
-                NotifyHelper.PrintToLog("Loading HealOnHit.");
+			if (Settings.HealthOnHitEnabled) {;
 				mission.AddMissionBehavior(new HealthOnHit());
 			}
 
-			if (Settings.PerventFleeing) {
-                NotifyHelper.PrintToLog("Loading PerventFleeing.");
+			if (Settings.EnableFleeing) {
 				mission.AddMissionBehavior(new PreventFleeing());
 			}
 		}

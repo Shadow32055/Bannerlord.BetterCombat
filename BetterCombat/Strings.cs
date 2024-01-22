@@ -1,5 +1,5 @@
-﻿namespace BetterCombat.Localizations {
-    public class RefValues {
+﻿namespace BetterCombat {
+    public class Strings {
         public const string HealingHeader = "{=BC_T1ldYr}Healing";
         public const string LifeStealHeader = "{=BC_vswqsP}Lifesteal";
         public const string HealingLimitHeader = "{=BC_Qui3WS}Healing Limit";
@@ -8,7 +8,6 @@
         public const string CombatHeader = "{=BC_doG96p}Combat Adjustments";
         public const string InterruptHeader = "{=BC_QiQdsa}Interrupt";
         public const string MultiHitHeader = "{=BC_eE2pN7}Hit Multiple Targets";
-        public const string SliceHeader = "{=BC_ctf4YT}Slice Through";
         public const string FleeingHeader = "{=BC_g3ktYT}Fleeing";
 
         public const string SecondsValue = "{=BC_mIjl1T}Seconds";
@@ -49,12 +48,22 @@
 
         public const string SliceText = "{=BC_h1h5go}Slice Through";
         public const string SliceHint = "{=BC_4E7oI9}Whether momentum is reduced after each hit. If enabled swing speed will be constant no matter how many enemies hit. (Active for all)";
-        public const string SlicePlayerText = "{=BC_dH3sFR}Slice Through Player Only";
-        public const string SlicePlayerHint = "{=BC_C7X0a2}Should Slice through be for player only";
+
+        public const string CrushText = "{=BC_dfjgh2}Crush Through";
+        public const string CrushHint = "{=BC_32hj01}Ability to damage a blocking target";
+
+        public const string ChanceText = "{=BC_Kpjiq5}Chance";
+        public const string ChanceHint = "{=BC_tQDcIy}Chance it will occur";
+
+        public const string PlayerOnlyText = "{=BC_g4bvbJ}Player Only";
+        public const string PlayerOnlyHint = "{=BC_VROHDs}Should this option only be for the player";
 
         public const string FleeText = "{=BC_opw7iq}Prevent Troops From Fleeing";
         public const string FleeHint = "{=BC_okw0a2}Should troops flee";
         public const string FleeChanceText = "{=BC_5th0a2}Chance Troops Will Cancel Retreat";
         public const string FleeChanceHint = "{=BC_C7twl6}Chance troops will skip retreating when moral triggers a retreat";
+
+        public const string FriendlyFireText = "{=BC_29dj65}Friendly Fire";
+        public const string FriendlyFireHint = "{=BC_aih239}Should friendly troops be able to damage each other";
     }
 }

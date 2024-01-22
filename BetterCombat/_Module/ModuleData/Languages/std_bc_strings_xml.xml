@@ -4,76 +4,19 @@
 		<tag language="English" />
 	</tags>
 	<strings>
-		<!-- Bandage Text -->
-		<string id="BC_qezRvY" text="Bandaging canceled due to movment!" />
-		<string id="BC_7cWw3B" text="No more avaiable healing!"/>
-		<string id="BC_YZj7gF" text="Bandage applied! Only {0} bandage left!" />
-		<string id="BC_q2WCze" text="Bandage applied! {0} bandages left!"/>
-		<string id="BC_RnoIZo" text="Applying bandage... It will take {0} seconds." />
-		<string id="BC_359Qlt" text="You're health is full."/>
-		<string id="BC_v3QHtG" text="You're already applying a bandage!" />
-		<string id="BC_dU1uDF" text="Out of bandages!"/>
-		<string id="BC_CfS4GM" text="You can't bandage while moving!"/>
-		
-		<!-- MCM Settings HEADERS -->
-		<string id="BC_dcTZTc" text="Health Adjustments" />
-		<string id="BC_WSwISD" text="Player"/>
-		<string id="BC_Y3b3aj" text="Heroes"/>
-		<string id="BC_9ChrRZ" text="Troops"/>
-		<string id="BC_iQO7dg" text="Percent"/>
-		<string id="BC_svyNju" text="Flat"/>
-		<string id="BC_my4drh" text="Campaign Regen"/>
-
 		<string id="BC_T1ldYr" text="Healing"/>
 		<string id="BC_vswqsP" text="Lifesteal"/>
-		<string id="BC_wj2XMD" text="Bandages"/>
 		<string id="BC_Qui3WS" text="Healing Limit"/>
 		<string id="BC_FiUuOv" text="Regeneration"/>
 
 		<string id="BC_doG96p" text="Combat Adjustments"/>
 		<string id="BC_QiQdsa" text="Interrupt"/>
 		<string id="BC_eE2pN7" text="Hit Multiple Targets"/>
-		<string id="BC_ctf4YT" text="Slice Through"/>
 		<string id="BC_g3ktYT" text="Fleeing"/>
 
 		<string id="BC_mIjl1T" text="Seconds"/>
+		<string id="BC_mI4e1T" text="HP"/>
 
-		<!-- MCM Settings Presets -->
-		<string id="BC_LpHW65" text="Vanilla Settings"/>
-
-		<!-- MCM Health Adjusments -->
-		<string id="BC_AN0I1h" text="Campaign Health Regen Multiplier"/>
-		<string id="BC_20Rrad" text="Multiplier for the amount of health restored each hour (I think?) out of battle (on campaign map). Zero disables healing outside of battles."/>
-		<string id="BC_GLbKVu" text="Percent Health per Level"/>
-		<string id="BC_VXzieI" text="Increase of health per level as percent"/>
-		<string id="BC_irO3ih" text="Percent"/>
-		<string id="BC_4XIzLW" text="Increase of health per level as percent"/>
-		<string id="BC_X2bMDl" text="Flat Health per Level"/>
-		<string id="BC_b34y4o" text="Increase of health per level as flat amount"/>
-		<string id="BC_sgsgLw" text="Flat Amount"/>
-		<string id="BC_otgBbg" text="Increase of health per level as flat amount"/>
-		
-		<string id="BC_6c8ZVc" text="Percent Health per Level"/>
-		<string id="BC_FDPiPM" text="Increase of health per level as percent"/>
-		<string id="BC_5v5KiC" text="Percent"/>
-		<string id="BC_gdQjpc" text="Increase of health per level as percent"/>
-		<string id="BC_Nz1V9j" text="Flat Health per Level"/>
-		<string id="BC_zTrqoY" text="Increase of health per level as flat amount"/>
-		<string id="BC_bstg46" text="Flat Amount"/>
-		<string id="BC_IGWiSJ" text="Increase of health per level as flat amount"/>
-		
-		<string id="BC_Suq0vt" text="Health from Athletics"/>
-		<string id="BC_gBBK3L" text="Increase of health per point of athletics"/>
-		<string id="BC_00jcfx" text="Percent Health per Level"/>
-		<string id="BC_7DZ5hW" text="Increase of health per level as percent"/>
-		<string id="BC_20yQKJ" text="Percent"/>
-		<string id="BC_T0Ooeh" text="Increase of health per level as percent"/>
-		<string id="BC_QGqnjW" text="Flat Health per Level"/>
-		<string id="BC_imb8dh" text="Increase of health per level as flat amount"/>
-		<string id="BC_LbmQFL" text="Flat Amount"/>
-		<string id="BC_zEYhaj" text="Increase of health per level as flat amount"/>
-
-		<!-- MCM Healing -->
 		<string id="BC_licHNP" text="Heal On Hit"/>
 		<string id="BC_xACH0R" text="Integration of nemoofnemo's mod 'Heal on hit'"/>
 		<string id="BC_QoOgnb" text="Percent Health Return"/>
@@ -82,23 +25,12 @@
 		<string id="BC_U7yfNX" text="Minimum health to return each hit."/>
 		<string id="BC_7F1hBJ" text="Maximum Health Return"/>
 		<string id="BC_Yom4eb" text="Maximum health to return each hit."/>
-		
-		<string id="BC_Ljnvjd" text="Enable Bandages"/>
-		<string id="BC_l4xYCv" text="Whether player can use bandages on battlefield"/>
-		<string id="BC_WI3k5M" text="Number of Bandages"/>
-		<string id="BC_AuTuGq" text="Number of bandages for use each mission"/>
-		<string id="BC_kKKj82" text="Health Per Bandage"/>
-		<string id="BC_Z7T6KB" text="How much health each bandage applies"/>
-		<string id="BC_L2llEt" text="Bandage Time"/>
-		<string id="BC_IdToPT" text="How long it takes to bandage, can't move during this time"/>
-		<string id="BC_MfXZnQ" text="Bandage Key"/>
-		<string id="BC_19RaR4" text="What key to use for Bandages. Examples 'Q', 'Numpad0'"/>
-		
+
 		<string id="BC_XHBWnA" text="Healing Limit"/>
 		<string id="BC_JzNe5x" text="Limit on the amount of healing possible each battle"/>
-		<string id="BC_pWvBgz" text="Healing Amount"/>
-		<string id="BC_auAAgh" text="Amount of health that can be restored each battle"/>
-		
+		<string id="BC_pWvBgz" text="Healing threshold"/>
+		<string id="BC_auAAgh" text="Maxium health percent threshold. Setting to 80% means you cant heal over 80%"/>
+
 		<string id="BC_RpREOe" text="Passive Regeneration"/>
 		<string id="BC_j9krAw" text="Integration of Jeffear's mod 'Combat Health Regen for Player and Mount'"/>
 		<string id="BC_9ggXgX" text="Player Health Regen Amount"/>
@@ -108,25 +40,34 @@
 		<string id="BC_MNHBnI" text="Player Regen Damage Delay"/>
 		<string id="BC_ZkbaIF" text="Time until next heal after damage"/>
 
-		<!-- MCM Combat Adjustments -->		
 		<string id="BC_P7uAXC" text="Player Shrug Off Blow"/>
 		<string id="BC_HIiVJT" text="Whether the player can shrug off blows"/>
 		<string id="BC_pevCBh" text="Prevent Player Knockdown"/>
 		<string id="BC_Qahm4a" text="Whether the player can be knocked down"/>
-		
+
 		<string id="BC_QcnUvW" text="All Two Handed Weapons"/>
 		<string id="BC_Pzd6yj" text="Whether weapons can hit multiple targets. Slowing down momentum with each target hit (reducing damage). (Active for all)"/>
 		<string id="BC_ou9xlu" text="All One handed Weapons"/>
 		<string id="BC_op9z9z" text="Whether weapons can hit multiple targets. Slowing down momentum with each target hit (reducing damage). (Active for all)"/>
-		
+
 		<string id="BC_h1h5go" text="Slice Through"/>
-		<string id="BC_4E7oI9" text="Whether momentum is reduced after each hit. If enabled swing speed will be constant no matter how many enemies hit."/>
-		<string id="BC_dH3sFR" text="Slice Through Player Only"/>
-		<string id="BC_C7X0a2" text="Should Slice through be for player only"/>
-		
+		<string id="BC_4E7oI9" text="Whether momentum is reduced after each hit. If enabled swing speed will be constant no matter how many enemies hit. (Active for all)"/>
+
+		<string id="BC_dfjgh2" text="Crush Through"/>
+		<string id="BC_32hj01" text="Ability to damage a blocking target"/>
+
+		<string id="BC_Kpjiq5" text="Chance"/>
+		<string id="BC_tQDcIy" text="Chance it will occur"/>
+
+		<string id="BC_g4bvbJ" text="Player Only"/>
+		<string id="BC_VROHDs" text="Should this option only be for the player"/>
+
 		<string id="BC_opw7iq" text="Prevent Troops From Fleeing"/>
 		<string id="BC_okw0a2" text="Should troops flee"/>
 		<string id="BC_5th0a2" text="Chance Troops Will Cancel Retreat"/>
 		<string id="BC_C7twl6" text="Chance troops will skip retreating when moral triggers a retreat"/>
+
+		<string id="BC_29dj65" text="Friendly Fire"/>
+		<string id="BC_aih239" text="Should friendly troops be able to damage each other"/>
 	</strings>
 </base>

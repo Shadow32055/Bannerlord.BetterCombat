@@ -40,7 +40,7 @@ namespace BetterCombat.Behaviors {
 				}
 
 			} catch (Exception e) {
-				NotifyHelper.ReportError(BetterCombat.ModName, "Problem with health on hit, cause: " + e);
+				NotifyHelper.WriteError(BetterCombat.ModName, "Problem with health on hit, cause: " + e);
 			}
 		}
 	}

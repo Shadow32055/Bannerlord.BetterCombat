@@ -1,6 +1,5 @@
 ﻿using BetterCore.Utils;
 using System;
-using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
 namespace BetterCombat.Behaviors {
@@ -9,18 +8,24 @@ namespace BetterCombat.Behaviors {
 		public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
         public override void OnAgentFleeing(Agent affectedAgent) {
+            base.OnAgentFleeing(affectedAgent);
             try {
-                double chance = BetterCombat.Settings.FleeingChance;
-                double random = MBRandom.RandomFloat;
+                if (affectedAgent == null)
+                    return;
 
-                if (random <= chance) {
-                    base.OnAgentFleeing(affectedAgent);
-                    affectedAgent.SetMorale(100);
-                    affectedAgent.StopRetreatingMoraleComponent();
-                    affectedAgent.StopRetreating();
-                }
+                if (!MathHelper.RandomChance(BetterCombat.Settings.FleeingChance))
+                    return;
+
+                if (BetterCombat.Settings.FleeingPlayerOnly && !affectedAgent.Team.IsPlayerAlly)
+                    return;
+               
+                affectedAgent.SetMorale(100);
+                affectedAgent.StopRetreatingMoraleComponent();
+                affectedAgent.StopRetreating();
+                //NotifyHelper.WriteToChat("Prevented fleeing");
+
             } catch (Exception e) {
-                NotifyHelper.ReportError(BetterCombat.ModName, "PreventFleeing.OnAgentFleeing threw expection: " + e);
+                NotifyHelper.WriteError(BetterCombat.ModName, "PreventFleeing.OnAgentFleeing threw exception: " + e);
             }
         }
 

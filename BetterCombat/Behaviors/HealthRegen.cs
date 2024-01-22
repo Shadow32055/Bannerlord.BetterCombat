@@ -6,49 +6,43 @@ namespace BetterCombat.Behaviors {
     public class HealthRegen : MissionBehavior {
 
 		private float lastHealthPlayer;
-		private bool tookDamagePlayer;
-		private MissionTime nextHealPlayer;
+		private MissionTime nextHealPlayer = MissionTime.Zero;
+		private MissionTime nextHealthCheck = MissionTime.Zero;
 
-		public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
-
-
+        public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
 		public override void OnMissionTick(float dt) {
 			base.OnMissionTick(dt);
 
 			try {
-				Mission mission = Mission.Current;
-				if (mission != null && mission.MainAgent != null) {
+                if (Mission.Current == null)
+                    return;
 
-					if (BetterCombat.Settings.PlayerHealthRegenAmount > 0) {
-						if (this.nextHealPlayer.IsPast) {
+                if (Mission.Current.MainAgent == null)
+                    return;
 
-							if (tookDamagePlayer) {
-								tookDamagePlayer = false;
-							}
+                if (BetterCombat.Settings.PlayerHealthRegenAmount == 0)
+                    return;
 
-							if (this.lastHealthPlayer > mission.MainAgent.Health) {
-								tookDamagePlayer = true;
-								this.nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerRegenDamageDelay);
-							} else {
-								this.nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerHealthRegenInterval);
+				if (Mission.Current.MainAgent.Health == Mission.Current.MainAgent.HealthLimit) {
+                    lastHealthPlayer = Mission.Current.MainAgent.HealthLimit;
+                    return;
+				}
 
-								float healAmount = BetterCombat.Settings.PlayerHealthRegenAmount;
-
-								
-
-								Regenerate(mission.MainAgent, healAmount);
-
-							}
-							this.lastHealthPlayer = mission.MainAgent.Health;
-						}
+				if (nextHealthCheck.IsPast) {
+					if (lastHealthPlayer > Mission.Current.MainAgent.Health) {
+                        nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerRegenDamageDelay);
+						lastHealthPlayer = Mission.Current.MainAgent.Health;
 					}
-					
-				} else {
-					this.nextHealPlayer = MissionTime.Zero;
+                    nextHealthCheck = MissionTime.SecondsFromNow(1);
+                }
+
+				if (nextHealPlayer.IsPast) {
+                    nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerHealthRegenInterval);
+					Regenerate(Mission.Current.MainAgent, BetterCombat.Settings.PlayerHealthRegenAmount);
 				}
 			} catch (Exception e) {
-				NotifyHelper.ReportError(BetterCombat.ModName, "Problem with health regen, cause: " + e);
+				NotifyHelper.WriteError(BetterCombat.ModName, "Player health regen threw exception: " + e);
 			}
 		}
 

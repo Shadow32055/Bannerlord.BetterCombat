@@ -1,5 +1,4 @@
-﻿using BetterCombat.Localizations;
-using MCM.Abstractions.Attributes;
+﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.Global;
 
@@ -12,20 +11,20 @@ namespace BetterCombat.Settings {
         /// LIFE STEAL
         /// </summary>
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.LifeStealHeader)]
-        [SettingPropertyBool(RefValues.HealHitText, IsToggle = true, Order = 0, RequireRestart = false, HintText = RefValues.HealHitHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.LifeStealHeader)]
+        [SettingPropertyBool(Strings.HealHitText, IsToggle = true, Order = 0, RequireRestart = false, HintText = Strings.HealHitHint)]
         public bool HealthOnHitEnabled { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.LifeStealHeader)]
-        [SettingPropertyFloatingInteger(RefValues.HealHitPercentText, 0.01f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = RefValues.HealHitPercentHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.LifeStealHeader)]
+        [SettingPropertyFloatingInteger(Strings.HealHitPercentText, 0.01f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = Strings.HealHitPercentHint)]
         public float PlayerPercentHealthOnHit { get; set; } = 0;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.LifeStealHeader)]
-        [SettingPropertyFloatingInteger(RefValues.HealHitMinText, 0f, 1000f, "0.0 HP", Order = 0, RequireRestart = false, HintText = RefValues.HealHitMinHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.LifeStealHeader)]
+        [SettingPropertyFloatingInteger(Strings.HealHitMinText, 0f, 1000f, "0.0 HP", Order = 0, RequireRestart = false, HintText = Strings.HealHitMinHint)]
         public float PlayerMinHealthOnHit { get; set; } = 0;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.LifeStealHeader)]
-        [SettingPropertyFloatingInteger(RefValues.HealHitMaxText, 0f, 1000f, "0.0 HP", Order = 0, RequireRestart = false, HintText = RefValues.HealHitMaxHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.LifeStealHeader)]
+        [SettingPropertyFloatingInteger(Strings.HealHitMaxText, 0f, 1000f, "0.0 HP", Order = 0, RequireRestart = false, HintText = Strings.HealHitMaxHint)]
         public float PlayerMaxHealthOnHit { get; set; } = 1000;
 
 
@@ -33,32 +32,32 @@ namespace BetterCombat.Settings {
         /// HEALING LIMIT
         /// </summary>
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.HealingLimitHeader)]
-        [SettingPropertyBool(RefValues.HealingLimitText, IsToggle = true, Order = 0, RequireRestart = false, HintText = RefValues.HealingLimitHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.HealingLimitHeader)]
+        [SettingPropertyBool(Strings.HealingLimitText, IsToggle = true, Order = 0, RequireRestart = false, HintText = Strings.HealingLimitHint)]
         public bool HealingLimit { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.HealingLimitHeader)]
-        [SettingPropertyFloatingInteger(RefValues.HealingAmountText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = RefValues.HealingAmountHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.HealingLimitHeader)]
+        [SettingPropertyFloatingInteger(Strings.HealingAmountText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = Strings.HealingAmountHint)]
         public float HealingThreshold { get; set; } = 0;
 
         /// <summary>
         /// REGENERATION
         /// </summary>
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.RegenHeader)]
-        [SettingPropertyBool(RefValues.RegenerationText, IsToggle = true, Order = 0, RequireRestart = false, HintText = RefValues.RegenerationHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.RegenHeader)]
+        [SettingPropertyBool(Strings.RegenerationText, IsToggle = true, Order = 0, RequireRestart = false, HintText = Strings.RegenerationHint)]
         public bool HealthRegenEnabled { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.RegenHeader)]
-        [SettingPropertyFloatingInteger(RefValues.RegenAmountText, 0f, 300f, "0.0 HP", Order = 0, RequireRestart = false, HintText = RefValues.RegenAmountHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.RegenHeader)]
+        [SettingPropertyFloatingInteger(Strings.RegenAmountText, 0f, 300f, "0.0 HP", Order = 0, RequireRestart = false, HintText = Strings.RegenAmountHint)]
         public float PlayerHealthRegenAmount { get; set; } = 0;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.RegenHeader)]
-        [SettingPropertyFloatingInteger(RefValues.RegenIntervalText, 1f, 120f, "0.0 " + RefValues.SecondsValue, Order = 0, RequireRestart = false, HintText = RefValues.RegenIntervalHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.RegenHeader)]
+        [SettingPropertyFloatingInteger(Strings.RegenIntervalText, 1f, 120f, "0.0 " + Strings.SecondsValue, Order = 0, RequireRestart = false, HintText = Strings.RegenIntervalHint)]
         public float PlayerHealthRegenInterval { get; set; } = 1;
 
-        [SettingPropertyGroup(RefValues.HealingHeader + "/" + RefValues.RegenHeader)]
-        [SettingPropertyFloatingInteger(RefValues.RegenDelayText, 1f, 120f, "0.0 " + RefValues.SecondsValue, Order = 0, RequireRestart = false, HintText = RefValues.RegenDelayHint)]
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.RegenHeader)]
+        [SettingPropertyFloatingInteger(Strings.RegenDelayText, 1f, 120f, "0.0 " + Strings.SecondsValue, Order = 0, RequireRestart = false, HintText = Strings.RegenDelayHint)]
         public float PlayerRegenDamageDelay { get; set; } = 1;
 
         /// <summary>
@@ -67,43 +66,77 @@ namespace BetterCombat.Settings {
 
 
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.InterruptHeader)]
-        [SettingPropertyBool(RefValues.ShrugOffText, Order = 0, RequireRestart = false, HintText = RefValues.ShrugOffHint)]
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.InterruptHeader)]
+        [SettingPropertyBool(Strings.ShrugOffText, Order = 0, RequireRestart = false, HintText = Strings.ShrugOffHint)]
         public bool ShrugOffBlow { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.InterruptHeader)]
-        [SettingPropertyBool(RefValues.KnockdownText, Order = 0, RequireRestart = false, HintText = RefValues.KnockdownHint)]
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.InterruptHeader)]
+        [SettingPropertyBool(Strings.KnockdownText, Order = 0, RequireRestart = false, HintText = Strings.KnockdownHint)]
         public bool PreventKnockdown { get; set; } = false;
 
 
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.MultiHitHeader)]
-        [SettingPropertyBool(RefValues.TwoHandedText, Order = 0, RequireRestart = false, HintText = RefValues.TwoHandedHint)]
-        public bool MutliHitTwoHanded { get; set; } = false;
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.MultiHitHeader)]
+        [SettingPropertyBool(Strings.TwoHandedText, Order = 0, RequireRestart = false, HintText = Strings.TwoHandedHint)]
+        public bool MultiHitTwoHanded { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.MultiHitHeader)]
-        [SettingPropertyBool(RefValues.OneHandedText, Order = 0, RequireRestart = false, HintText = RefValues.OneHandedHint)]
-        public bool MutliHitOneHanded { get; set; } = false;
-
-
-
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.SliceHeader)]
-        [SettingPropertyBool(RefValues.SliceText, Order = 0, IsToggle = true, RequireRestart = false, HintText = RefValues.SliceHint)]
-        public bool CutThroughActive { get; set; } = false;
-
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.SliceHeader)]
-        [SettingPropertyBool(RefValues.SlicePlayerText, Order = 0, RequireRestart = false, HintText = RefValues.SlicePlayerHint)]
-        public bool CutThroughPlayerOnly { get; set; } = false;
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.MultiHitHeader)]
+        [SettingPropertyBool(Strings.OneHandedText, Order = 0, RequireRestart = false, HintText = Strings.OneHandedHint)]
+        public bool MultiHitOneHanded { get; set; } = false;
 
 
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.FleeingHeader)]
-        [SettingPropertyBool(RefValues.FleeText, Order = 0, RequireRestart = false, HintText = RefValues.FleeHint)]
-        public bool PerventFleeing { get; set; } = false;
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.SliceText)]
+        [SettingPropertyBool(Strings.SliceText, Order = 0, IsToggle = true, RequireRestart = false, HintText = Strings.SliceHint)]
+        public bool SliceThroughActive { get; set; } = false;
 
-        [SettingPropertyGroup(RefValues.CombatHeader + "/" + RefValues.FleeingHeader)]
-        [SettingPropertyFloatingInteger(RefValues.FleeChanceText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = RefValues.FleeChanceHint)]
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.SliceText)]
+        [SettingPropertyBool(Strings.PlayerOnlyText, Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
+        public bool SliceThroughPlayerOnly { get; set; } = false;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.SliceText)]
+        [SettingPropertyFloatingInteger(Strings.ChanceText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = Strings.ChanceHint)]
+        public float SliceThroughChance { get; set; } = .50f;
+
+        
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.CrushText)]
+        [SettingPropertyBool(Strings.CrushText, Order = 0, IsToggle = true, RequireRestart = false, HintText = Strings.CrushHint)]
+        public bool CrushThroughActive { get; set; } = false;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.CrushText)]
+        [SettingPropertyBool(Strings.PlayerOnlyText, Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
+        public bool CrushThroughPlayerOnly { get; set; } = false;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.CrushText)]
+        [SettingPropertyFloatingInteger(Strings.ChanceText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = Strings.ChanceHint)]
+        public float CrushThroughChance { get; set; } = .50f;
+
+
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FleeingHeader)]
+        [SettingPropertyBool(Strings.FleeText, Order = 0, IsToggle = true, RequireRestart = false, HintText = Strings.FleeHint)]
+        public bool EnableFleeing { get; set; } = false;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FleeingHeader)]
+        [SettingPropertyFloatingInteger(Strings.FleeChanceText, 0f, 1f, "0.0 %", Order = 0, RequireRestart = false, HintText = Strings.FleeChanceHint)]
         public float FleeingChance { get; set; } = .50f;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FleeingHeader)]
+        [SettingPropertyBool(Strings.PlayerOnlyText, Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
+        public bool FleeingPlayerOnly { get; set; } = false;
+
+
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FriendlyFireText)]
+        [SettingPropertyBool(Strings.FriendlyFireText, Order = 0, RequireRestart = false, HintText = Strings.FriendlyFireHint)]
+        public bool EnableFriendlyFire { get; set; } = true;
+
+        [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FriendlyFireText)]
+        [SettingPropertyBool(Strings.PlayerOnlyText, Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
+        public bool FriendlyFirePlayerOnly { get; set; } = true;
+
+
 
 
 
@@ -111,6 +144,5 @@ namespace BetterCombat.Settings {
         public override string DisplayName { get { return base.GetType().Assembly.GetName().Name; } }
         public override string FolderName { get { return base.GetType().Assembly.GetName().Name; } }
         public override string FormatType { get; } = "xml";
-        public bool LoadMCMConfigFile { get; set; } = true;
     }
 }
