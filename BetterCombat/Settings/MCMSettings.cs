@@ -129,12 +129,12 @@ namespace BetterCombat.Settings {
 
 
         [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FriendlyFireText)]
-        [SettingPropertyBool(Strings.FriendlyFireText, Order = 0, RequireRestart = false, HintText = Strings.FriendlyFireHint)]
-        public bool EnableFriendlyFire { get; set; } = true;
+        [SettingPropertyBool(Strings.FriendlyFireText, IsToggle = true, Order = 0, RequireRestart = false, HintText = Strings.FriendlyFireHint)]
+        public bool DisableFriendlyFire { get; set; } = false;
 
         [SettingPropertyGroup(Strings.CombatHeader + "/" + Strings.FriendlyFireText)]
         [SettingPropertyBool(Strings.PlayerOnlyText, Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
-        public bool FriendlyFirePlayerOnly { get; set; } = true;
+        public bool FriendlyFirePlayerOnly { get; set; } = false;
 
 
 

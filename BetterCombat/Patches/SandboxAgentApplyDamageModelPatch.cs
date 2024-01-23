@@ -11,7 +11,7 @@ namespace BetterCombat.Patches {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SandboxAgentApplyDamageModel), nameof(SandboxAgentApplyDamageModel.CalculateDamage))]
         private static bool CalculateDamagePrefix(ref float __result, ref AttackInformation attackInformation) {
-            if (BetterCombat.Settings.EnableFriendlyFire)
+            if (!BetterCombat.Settings.DisableFriendlyFire)
                 return true;
 
             if (attackInformation.AttackerFormation == null)

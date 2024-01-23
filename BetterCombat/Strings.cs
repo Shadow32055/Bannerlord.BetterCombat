@@ -63,7 +63,7 @@
         public const string FleeChanceText = "{=BC_5th0a2}Chance Troops Will Cancel Retreat";
         public const string FleeChanceHint = "{=BC_C7twl6}Chance troops will skip retreating when moral triggers a retreat";
 
-        public const string FriendlyFireText = "{=BC_29dj65}Friendly Fire";
+        public const string FriendlyFireText = "{=BC_29dj65}Disable Friendly Fire";
         public const string FriendlyFireHint = "{=BC_aih239}Should friendly troops be able to damage each other";
     }
 }
