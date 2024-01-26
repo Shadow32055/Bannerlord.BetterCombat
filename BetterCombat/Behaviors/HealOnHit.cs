@@ -7,37 +7,38 @@ namespace BetterCombat.Behaviors {
 
 		public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
+        public override void OnDeploymentFinished() {
+            base.OnDeploymentFinished();
+            HealthHelper.HealLimit = BetterCombat.Settings.HealingThreshold;
+        }
+
         public override void OnAgentHit(Agent affectedAgent, Agent affectorAgent, in MissionWeapon affectorWeapon, in Blow blow, in AttackCollisionData attackCollisionData) {
             base.OnAgentHit(affectedAgent, affectorAgent, affectorWeapon, blow, attackCollisionData);
 
 			try {
-				if (affectorAgent.Character != null && affectedAgent.Character != null) {
-					if (affectorAgent == Agent.Main && attackCollisionData.InflictedDamage > 0f) {
+				if (affectorAgent == null || affectedAgent == null)
+					return;
 
-						float healAmount = attackCollisionData.InflictedDamage * BetterCombat.Settings.PlayerPercentHealthOnHit;
+				if (Mission.Current.MainAgent == null && BetterCombat.Settings.HealthOnHitPlayerOnly)
+					return;
 
-						if (healAmount < BetterCombat.Settings.PlayerMinHealthOnHit) {
-							healAmount = BetterCombat.Settings.PlayerMinHealthOnHit;
-						}
+				if (affectorAgent != Mission.Current.MainAgent && BetterCombat.Settings.HealthOnHitPlayerOnly)
+					return;
 
-						if (healAmount > BetterCombat.Settings.PlayerMaxHealthOnHit) {
-							healAmount = BetterCombat.Settings.PlayerMaxHealthOnHit;
-						}
+				if (attackCollisionData.InflictedDamage <= 0)
+					return;
 
-						float refinedHealthAmount = 0;
+				float healAmount = attackCollisionData.InflictedDamage * BetterCombat.Settings.PlayerPercentHealthOnHit;
 
-						if (BetterCombat.Settings.HealingLimit) {
-                            refinedHealthAmount = HealthHelper.GetMaxHealAmount(healAmount, affectorAgent.Health, BetterCombat.Settings.HealingThreshold * affectorAgent.HealthLimit);
-                        } else {
-                            refinedHealthAmount = HealthHelper.GetMaxHealAmount(healAmount, affectorAgent.Health, affectorAgent.HealthLimit);
-						}
-
-						if (affectorAgent.Health < affectorAgent.HealthLimit) {
-
-							affectorAgent.Health += healAmount;
-						}
-					}
+				if (healAmount < BetterCombat.Settings.PlayerMinHealthOnHit) {
+					healAmount = BetterCombat.Settings.PlayerMinHealthOnHit;
 				}
+
+				if (healAmount > BetterCombat.Settings.PlayerMaxHealthOnHit) {
+					healAmount = BetterCombat.Settings.PlayerMaxHealthOnHit;
+				}
+
+				HealthHelper.HealAgent(affectorAgent, healAmount);
 
 			} catch (Exception e) {
 				NotifyHelper.WriteError(BetterCombat.ModName, "Problem with health on hit, cause: " + e);

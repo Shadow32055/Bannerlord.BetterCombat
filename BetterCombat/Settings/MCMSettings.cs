@@ -27,6 +27,10 @@ namespace BetterCombat.Settings {
         [SettingPropertyFloatingInteger(Strings.HealHitMaxText, 0f, 1000f, "0.0 HP", Order = 0, RequireRestart = false, HintText = Strings.HealHitMaxHint)]
         public float PlayerMaxHealthOnHit { get; set; } = 1000;
 
+        [SettingPropertyGroup(Strings.HealingHeader + "/" + Strings.LifeStealHeader)]
+        [SettingPropertyBool(Strings.PlayerOnlyText,  Order = 0, RequireRestart = false, HintText = Strings.PlayerOnlyHint)]
+        public bool HealthOnHitPlayerOnly { get; set; } = false;
+
 
         /// <summary>
         /// HEALING LIMIT

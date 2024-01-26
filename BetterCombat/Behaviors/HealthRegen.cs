@@ -11,7 +11,12 @@ namespace BetterCombat.Behaviors {
 
         public override MissionBehaviorType BehaviorType => MissionBehaviorType.Other;
 
-		public override void OnMissionTick(float dt) {
+        public override void OnDeploymentFinished() {
+            base.OnDeploymentFinished();
+            HealthHelper.HealLimit = BetterCombat.Settings.HealingThreshold;
+        }
+
+        public override void OnMissionTick(float dt) {
 			base.OnMissionTick(dt);
 
 			try {
@@ -39,25 +44,10 @@ namespace BetterCombat.Behaviors {
 
 				if (nextHealPlayer.IsPast) {
                     nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerHealthRegenInterval);
-					Regenerate(Mission.Current.MainAgent, BetterCombat.Settings.PlayerHealthRegenAmount);
+					HealthHelper.HealAgent(Mission.Current.MainAgent, BetterCombat.Settings.PlayerHealthRegenAmount);
 				}
 			} catch (Exception e) {
 				NotifyHelper.WriteError(BetterCombat.ModName, "Player health regen threw exception: " + e);
-			}
-		}
-
-		private void Regenerate(Agent agent, float amount) {
-			if (agent.Health < agent.HealthLimit) {
-				float healAmount = 0;
-				if (BetterCombat.Settings.HealingLimit) {
-					healAmount = HealthHelper.GetMaxHealAmount(amount, agent.Health, BetterCombat.Settings.HealingThreshold * agent.HealthLimit);
-				} else {
-					healAmount = HealthHelper.GetMaxHealAmount(amount, agent.Health, agent.HealthLimit);
-				}
-
-				if (agent == Mission.Current.MainAgent) {
-					agent.Health += healAmount;
-				}
 			}
 		}
 	}

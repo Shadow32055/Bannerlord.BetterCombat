@@ -46,6 +46,7 @@ namespace BetterCombat {
 
                 NotifyHelper.WriteMessage(ModName + " Loaded.", MsgType.Good);
                 Integrations.BetterCombatLoaded = true;
+                HealthHelper.HealLimit = Settings.HealingThreshold;
 
                 isLoaded = true;
             } catch (Exception e) {
