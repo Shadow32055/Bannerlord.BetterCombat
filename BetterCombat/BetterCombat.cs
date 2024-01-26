@@ -46,7 +46,6 @@ namespace BetterCombat {
 
                 NotifyHelper.WriteMessage(ModName + " Loaded.", MsgType.Good);
                 Integrations.BetterCombatLoaded = true;
-                HealthHelper.HealLimit = Settings.HealingThreshold;
 
                 isLoaded = true;
             } catch (Exception e) {
@@ -55,19 +54,26 @@ namespace BetterCombat {
         }
 
         public override void OnMissionBehaviorInitialize(Mission mission) {
-			base.OnMissionBehaviorInitialize(mission);
+            try {
+                base.OnMissionBehaviorInitialize(mission);
 
-			if (Settings.HealthRegenEnabled) {
-				mission.AddMissionBehavior(new HealthRegen());
-			}
+                HealthHelper.HealLimit = Settings.HealingThreshold;
 
-			if (Settings.HealthOnHitEnabled) {;
-				mission.AddMissionBehavior(new HealthOnHit());
-			}
+                if (Settings.HealthRegenEnabled) {
+                    mission.AddMissionBehavior(new HealthRegen());
+                }
 
-			if (Settings.EnableFleeing) {
-				mission.AddMissionBehavior(new PreventFleeing());
-			}
-		}
+                if (Settings.HealthOnHitEnabled) {
+                    ;
+                    mission.AddMissionBehavior(new HealthOnHit());
+                }
+
+                if (Settings.EnableFleeing) {
+                    mission.AddMissionBehavior(new PreventFleeing());
+                }
+            } catch (Exception e) {
+                NotifyHelper.WriteError(ModName, "OnMissionBehaviorInitialize threw exception " + e);
+            }
+        }
     }
 }
