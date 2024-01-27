@@ -13,7 +13,11 @@ namespace BetterCombat.Behaviors {
 
         public override void OnDeploymentFinished() {
             base.OnDeploymentFinished();
-            HealthHelper.HealLimit = BetterCombat.Settings.HealingThreshold;
+            if (BetterCombat.Settings.HealingLimit) {
+                HealthHelper.HealLimit = BetterCombat.Settings.HealingThreshold;
+            } else {
+                HealthHelper.HealLimit = 1f;
+            }
         }
 
         public override void OnMissionTick(float dt) {

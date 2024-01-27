@@ -57,7 +57,11 @@ namespace BetterCombat {
             try {
                 base.OnMissionBehaviorInitialize(mission);
 
-                HealthHelper.HealLimit = Settings.HealingThreshold;
+                if (Settings.HealingLimit) {
+                    HealthHelper.HealLimit = Settings.HealingThreshold;
+                } else {
+                    HealthHelper.HealLimit = 1f;
+                }
 
                 if (Settings.HealthRegenEnabled) {
                     mission.AddMissionBehavior(new HealthRegen());
