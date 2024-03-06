@@ -10,15 +10,21 @@ namespace BetterCombat.Behaviors {
         public override void OnAgentFleeing(Agent affectedAgent) {
             base.OnAgentFleeing(affectedAgent);
             try {
+                if (!BetterCombat.Settings.EnableFleeing)
+                    return;
+
                 if (affectedAgent == null)
+                    return;
+
+                if (affectedAgent.Team == null)
+                    return;
+
+                if (BetterCombat.Settings.FleeingPlayerOnly && !affectedAgent.Team.IsPlayerAlly)
                     return;
 
                 if (!MathHelper.RandomChance(BetterCombat.Settings.FleeingChance))
                     return;
 
-                if (BetterCombat.Settings.FleeingPlayerOnly && !affectedAgent.Team.IsPlayerAlly)
-                    return;
-               
                 affectedAgent.SetMorale(100);
                 affectedAgent.StopRetreatingMoraleComponent();
                 affectedAgent.StopRetreating();

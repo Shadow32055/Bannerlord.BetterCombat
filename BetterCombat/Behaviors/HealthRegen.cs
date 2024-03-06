@@ -42,6 +42,7 @@ namespace BetterCombat.Behaviors {
 					if (lastHealthPlayer > Mission.Current.MainAgent.Health) {
                         nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerRegenDamageDelay);
 						lastHealthPlayer = Mission.Current.MainAgent.Health;
+                        //NotifyHelper.WriteToChat("regen delay started");
 					}
                     nextHealthCheck = MissionTime.SecondsFromNow(1);
                 }
@@ -49,6 +50,7 @@ namespace BetterCombat.Behaviors {
 				if (nextHealPlayer.IsPast) {
                     nextHealPlayer = MissionTime.SecondsFromNow(BetterCombat.Settings.PlayerHealthRegenInterval);
 					HealthHelper.HealAgent(Mission.Current.MainAgent, BetterCombat.Settings.PlayerHealthRegenAmount);
+                    //NotifyHelper.WriteToChat("healed");
 				}
 			} catch (Exception e) {
 				NotifyHelper.WriteError(BetterCombat.ModName, "Player health regen threw exception: " + e);

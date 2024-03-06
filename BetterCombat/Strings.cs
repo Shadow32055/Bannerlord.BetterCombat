@@ -1,7 +1,7 @@
 ﻿namespace BetterCombat {
     public class Strings {
         public const string HealingHeader = "{=BC_T1ldYr}Healing";
-        public const string LifeStealHeader = "{=BC_vswqsP}Lifesteal";
+        public const string LifeStealHeader = "{=BC_vswqsP}Life steal";
         public const string HealingLimitHeader = "{=BC_Qui3WS}Healing Limit";
         public const string RegenHeader = "{=BC_FiUuOv}Regeneration";
 
@@ -14,7 +14,7 @@
         public const string HPValue = "{=BC_mI4e1T}HP";
 
         public const string HealHitText = "{=BC_licHNP}Heal On Hit";
-        public const string HealHitHint = "{=BC_xACH0R}Integration of nemoofnemo's mod 'Heal on hit'";
+        public const string HealHitHint = "{=BC_xACH0R}Integration of Nemoofnemo's mod 'Heal on hit'";
         public const string HealHitPercentText = "{=BC_QoOgnb}Percent Health Return";
         public const string HealHitPercentHint = "{=BC_jNQdIU}Percentage of damage dealt to be returned as health.";
         public const string HealHitMinText = "{=BC_Pv8jKZ}Minimum Health Return";
@@ -25,7 +25,7 @@
         public const string HealingLimitText = "{=BC_XHBWnA}Healing Limit";
         public const string HealingLimitHint = "{=BC_JzNe5x}Limit on the amount of healing possible each battle";
         public const string HealingAmountText = "{=BC_pWvBgz}Healing threshold";
-        public const string HealingAmountHint = "{=BC_auAAgh}Maxium health percent threshold. Setting to 80% means you cant heal over 80%";
+        public const string HealingAmountHint = "{=BC_auAAgh}Maximum health percent threshold. Setting to 80% means you cant heal over 80%";
 
         public const string RegenerationText = "{=BC_RpREOe}Passive Regeneration";
         public const string RegenerationHint = "{=BC_j9krAw}Integration of Jeffear's mod 'Combat Health Regen for Player and Mount'";
